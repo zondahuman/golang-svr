@@ -1,0 +1,9 @@
+*.swp
+*.eml
+*.iml
+*.log
+*.exe
+
+target
+/target
+bin
