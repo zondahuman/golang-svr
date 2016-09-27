@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 )
@@ -11,11 +12,17 @@ func main() {
 	data["userName"] = []string{"abin"}
 	data["passWord"] = []string{"myPassWord"}
 
-	res, err := http.PostForm("http://localhost:9000/login", data)
+	response, err := http.PostForm("http://localhost:9000/login", data)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
-	defer res.Body.Close()
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		// handle error
+	}
+
+	fmt.Println(string(body))
+	defer response.Body.Close()
 	fmt.Println("send post success")
 }
