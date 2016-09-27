@@ -8,3 +8,5 @@ func main() {
 	fmt.Println(Add(1, 2))
 	fmt.Println(common.Plus("abin"))
 }
+
+func HttpPostServer() {}
