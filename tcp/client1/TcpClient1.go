@@ -23,7 +23,6 @@ func main() {
 func startClient(conn net.Conn) {
 	var message = "hello, who~!"
 	for {
-
 		conn.Write([]byte(message))
 		buffer := make([]byte, 128)
 		client, err := conn.Read(buffer)
