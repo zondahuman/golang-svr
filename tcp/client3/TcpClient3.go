@@ -34,6 +34,14 @@ func main() {
 	fmt.Println("connect success")
 
 	go sender(conn)
+	buffer := make([]byte, 1024)
+	result, err := conn.Read(buffer)
+	if err != nil {
+		fmt.Println(conn.RemoteAddr().String(), " connection error: ", err)
+		return
+	}
+	var output = string(buffer[:result])
+	fmt.Println(conn.RemoteAddr().String(), "receive data string:", output)
 
 	for {
 		time.Sleep(1 * 1e9)
